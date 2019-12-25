@@ -38,6 +38,20 @@ if [ -e "/requirements.txt" ]; then
     $(command -v pip) install --user -r /requirements.txt
 fi
 
+# Build custom docker containers
+# if [ -e "/containers.txt" ]; then
+#     echo "READING CONTAINERS"
+#     while IFS= read -r line; do
+#         echo "Builing docker container from: $line"
+#         docker build $line
+#     done < /containers.txt
+# fi
+
+# echo "DOCKER GROUP"
+# echo $DOCKER_GROUP_ID
+# addgroup --gid $DOCKER_GROUP_ID docker
+# usermod -a -G docker airflow
+
 if [ -n "$REDIS_PASSWORD" ]; then
     REDIS_PREFIX=:${REDIS_PASSWORD}@
 else
